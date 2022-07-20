@@ -3,7 +3,7 @@ package com.rktuhinbd.rxjava.repository;
 import androidx.lifecycle.MutableLiveData;
 
 import com.rktuhinbd.rxjava.BuildConfig;
-import com.rktuhinbd.rxjava.model.CertificateResponse;
+import com.rktuhinbd.rxjava.model.NetworkResponse;
 import com.rktuhinbd.rxjava.service.ApiClient;
 import com.rktuhinbd.rxjava.service.ApiService;
 import com.rktuhinbd.rxjava.service.DataResponse;
@@ -30,14 +30,14 @@ public class Repository {
     }
 
     // = = = Get End Class Rating = = = //
-    public void getRatingData(MutableLiveData<DataResponse<CertificateResponse>> liveData) {
+    public void getRatingData(MutableLiveData<DataResponse<NetworkResponse>> liveData) {
 
         liveData.setValue(DataResponse.loading(null));
 
-        service.getRating()
+        service.getNetworkData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<CertificateResponse>() {
+                .subscribe(new SingleObserver<NetworkResponse>() {
                     Disposable disposable;
 
                     @Override
@@ -46,7 +46,7 @@ public class Repository {
                     }
 
                     @Override
-                    public void onSuccess(@NonNull CertificateResponse response) {
+                    public void onSuccess(@NonNull NetworkResponse response) {
                         if (response != null) {
                             liveData.setValue(DataResponse.success(response));
                         }
