@@ -28,7 +28,7 @@ public class ViewModel extends AndroidViewModel {
     }
 
     public void getRatingData() {
-        repository.getRatingData(mutableLiveData);
+        repository.getNetworkData(mutableLiveData);
     }
 
 }

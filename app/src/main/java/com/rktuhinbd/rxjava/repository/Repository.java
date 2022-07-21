@@ -29,8 +29,8 @@ public class Repository {
         }
     }
 
-    // = = = Get End Class Rating = = = //
-    public void getRatingData(MutableLiveData<DataResponse<NetworkResponse>> liveData) {
+    // = = = Get Network Data = = = //
+    public void getNetworkData(MutableLiveData<DataResponse<NetworkResponse>> liveData) {
 
         liveData.setValue(DataResponse.loading(null));
 
